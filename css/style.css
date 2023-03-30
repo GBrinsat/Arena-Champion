@@ -1,0 +1,36 @@
+@font-face {
+    font-family: "monogram";
+    src: local("monogram"),
+        url("../assets/monogram.ttf");
+}
+
+body {
+    background-color: rgb(70, 70, 70);
+    padding: 0;
+    margin: 0;
+    font-family: "monogram";
+}
+
+#canvas {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+canvas {
+    border: 1px white solid;
+    opacity: 100%;
+    background-image: url("../assets/filthy-drawings-arena-2.png");
+    margin-top: 50px;
+}
+
+.start-button {
+    position: absolute;
+    align-self: center;
+    top: 400px;
+    width: 300px;
+    height: 40px;
+    font-family: "monogram";
+    font-size: 32px;
+}
