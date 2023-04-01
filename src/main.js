@@ -1,15 +1,22 @@
+const game = new Game();
+const animations = new Animations();
+
 function preload() {
+    console.log("preloading main")
+    game.preload()
+    animations.preload()
 
 }
 
 function setup() {
     let canvas = createCanvas(screenWidth, screenHeight);
-    canvas.className = "test"
     canvas.parent("canvas")
+    console.log(canvas.parent())
 }
 
 function draw() {
-
+    game.draw()     
+    game.character.draw()
 }
 
 /* for navigating menus

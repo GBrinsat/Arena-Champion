@@ -11,6 +11,70 @@ body {
     font-family: "monogram";
 }
 
+@keyframes header-zoom {
+    0% {transform: scale(0, 0)}
+    50% {transform: scale(0.5, 0.5)}
+    100% {transform: scale(1, 1)}
+}
+
+@keyframes instructions-fadein {
+    0% {opacity: 0;}
+    85% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@keyframes startbutton-fadein {
+    0% {opacity: 0;}
+    85% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@keyframes background-fadein {
+    0% {opacity: 0;}
+    50% {opacity: 0.5;}
+    100% {opacity: 1;}
+}
+
+@keyframes background-movement {
+    0% {background-position-y: 0%;}
+    25% {background-position-y: 0%;}
+    100% {background-position-y: 100%;}
+}
+
+
+.start-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    background-color: white;
+    position: absolute;
+    padding-top: 5px;
+    font-size: 50px;
+    top: 150px;
+    width: 500px;
+    height: 50px;
+    align-self: center;
+    text-align: center;
+
+    animation-name: header-zoom;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+}
+
+p {
+    background-color: white;
+    position: absolute;
+    top: 250px;
+    font-size: 40px;
+
+    animation-name: instructions-fadein;
+    animation-duration: 3s;
+}
+
 #canvas {
     display: flex;
     flex-direction: column;
@@ -19,18 +83,28 @@ body {
 }
 
 canvas {
-    border: 1px white solid;
-    opacity: 100%;
-    background-image: url("../assets/filthy-drawings-arena-2.png");
+    opacity: 1;
+    
     margin-top: 50px;
+}
+
+.background-animation{
+    background-image: url("../assets/filthy-drawings-arena-2.png");
+    background-position: bottom;
+    border: 1px white solid;
+    animation-name: background-fadein, background-movement;
+    animation-duration: 1s, 8s;
 }
 
 .start-button {
     position: absolute;
     align-self: center;
-    top: 400px;
+    top: 550px;
     width: 300px;
     height: 40px;
     font-family: "monogram";
     font-size: 32px;
+
+    animation-name: startbutton-fadein;
+    animation-duration: 3.5s;
 }

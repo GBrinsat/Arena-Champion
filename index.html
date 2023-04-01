@@ -5,22 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.js"></script>
     <title>Ultimate Warrior</title>
 </head>
 <body>
+    <!-- --start screen-- -->
+    <div class="start-screen">
+        <h1>Ultimate Warrior</h1>
+        <p>This is where the instructions go!</p>
+        <button id="start-button" class="start-button" name="start">Start Game</button>
+    </div>
     <div id="canvas">
     
-    <!-- --start screen-- -->
-
-    <button id="button" class="start-button" name="start">Start Game</button>
+    
 
 
 
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.js"></script>
-    <script src="src/main.js"></script>
-    <script src="src/game.js"></script>
-    <script src="src/constants.js"></script>
+    
+    <script src="./src/p5.gif.js"></script>
+    <script src="./src/constants.js"></script>
+    <script src="./src/animations.js"></script>
+    <script src="./src/characterScreen.js"></script>
+    <script src="./src/startScreen.js"></script>
+    <script src="./src/player.js"></script>
+    <script src="./src/game.js"></script>
+    <script src="./src/main.js"></script>
 </body>
 </html>
