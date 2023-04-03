@@ -1,4 +1,7 @@
+
+
 class Player {
+    
     constructor() {
         this.image
         this.col

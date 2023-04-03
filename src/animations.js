@@ -1,12 +1,9 @@
 
 class Animations {
+    
     constructor() {
         this.gif
     }
-
-   /*  playerCharacterScreen(x, y) {
-        //use this to position gif
-    } */
 
     preload() {
         
@@ -17,6 +14,11 @@ class Animations {
         clear()
         console.log("isdrawing")
         image(this.gif, 387, 170)
+    }
+
+    stopGif() {
+        this.gif = "none"
+        noLoop()
     }
 
 

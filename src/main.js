@@ -1,5 +1,7 @@
+
 const game = new Game();
 const animations = new Animations();
+
 
 function preload() {
     console.log("preloading main")

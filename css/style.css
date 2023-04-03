@@ -86,7 +86,7 @@ p {
 
 canvas {
     opacity: 1;
-    
+
     margin-top: 50px;
 }
 
@@ -110,5 +110,46 @@ canvas {
 
     animation-name: startbutton-fadein;
     animation-duration: 3.5s;
+}
+
+.character-screen {
+    display: none;
+}
+
+.nameInput {
+    font-family: monogram;
+    font-size: 32px;
+    text-align: center;
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    width: 262px;
+    top: 430px;
+}
+
+.enterArena{
+    font-family: monogram;
+    font-size: 32px;
+    text-align: center;
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    width: 266px;
+    top: 480px;
+}
+
+.characterDisplay {
+
+}
+
+.characterStats {
+
+}
+
+.menu {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
 }
 
