@@ -16,9 +16,7 @@ function setup() {
     console.log(canvas.parent())
 }
 
-function draw() {
-    game.draw()     
-    //game.character.draw()
+function draw() {   
     if(isClicked === true) {
         animations.draw()
     }

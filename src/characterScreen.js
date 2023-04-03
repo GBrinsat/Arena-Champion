@@ -26,7 +26,7 @@ class CharacterScreen {
 
             game.characterScreen.enterArena()
 
-        }, 3000)
+        }, 0)
 
 
     }
