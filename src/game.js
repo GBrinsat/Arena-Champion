@@ -7,6 +7,7 @@ class Game {
         this.characterScreen = new CharacterScreen()
         this.mainMenu = new MainMenu()
         this.fightScreen = new FightScreen()
+
     }
 
     preload() {

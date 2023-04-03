@@ -6,6 +6,8 @@ class MainMenu {
         this.stageTwoSelected = false
         this.stageThreeSelected = false
         this.stageFourSelected = false
+
+        this.fightSelectContainer
     }
 
     displayMenu() {
@@ -20,7 +22,6 @@ class MainMenu {
 
         characterBox.innerHTML = "<div class='characterDisplay'></div><div class ='characterStats'><span>Name: </span><span>Level:</span><span>Rank: </span><br><span>HP: </span><span>Mana: </span><span>Strength: </span><span>Intelligence: </span><span>Gold: </span></div>"
         menu.innerHTML = "<span id='selectFight'>Start Combat</span><span id='shop'>Enter Shop</span>"
-
 
         const parent = document.querySelector("#canvas")
         const child = document.querySelector("#defaultCanvas0")
@@ -49,9 +50,19 @@ class MainMenu {
 
         selectFight.addEventListener("click", () => {
             if(selectFight.style.color = "red") {
-               this.displayFightSelect()
-            }
+                this.displayFightSelect()
+
+                /* if(this.fightSelectContainer === undefined) {
+                    this.displayFightSelect()
+                }
+                else {
+                    this.fightSelectContainer.style.display === "flex"
+                    document.querySelector(".characterBox").style.display = "none"
+                    document.querySelector(".menu").style.display = "none"
+            } */
+              }
            })
+
         shop.addEventListener("click", () => {
             if(shop.style.color = "red") {
                console.log("transfer to shop")
@@ -63,20 +74,18 @@ class MainMenu {
 
         //create new Elements to display
 
-        document.querySelector(".characterBox").remove()
-        document.querySelector(".menu").remove()
+        document.querySelector(".characterBox").style.display = "none"
+        document.querySelector(".menu").style.display = "none"
 
-        const container = document.createElement("div")
-        container.className = "fightSelectContainer"
+        this.fightSelectContainer = document.createElement("div")
+        this.fightSelectContainer.className = "fightSelectContainer"
 
-        const stageDisplay = document.createElement("div")
-
-        container.innerHTML = "<div class='fightSelect'><span id='stageOne'>Teststage 1</span><span id='stageTwo'>Teststage 2</span><span id='stageThree'>Teststage 3</span><span id='stageFour'>Teststage 4</span></div><div class='startFight'><span id='startFight'>Start Fight</span></div>"
+        this.fightSelectContainer.innerHTML = "<div class='fightSelect'><span id='stageOne'>Teststage 1</span><span id='stageTwo'>Teststage 2</span><span id='stageThree'>Teststage 3</span><span id='stageFour'>Teststage 4</span></div><div class='startFight'><span id='startFight'>Start Fight</span></div>"
 
         const parent = document.querySelector("#canvas")
         const child = document.querySelector("#defaultCanvas0")
 
-        parent.insertBefore(container, child)
+        parent.insertBefore(this.fightSelectContainer, child)
 
         //add event listeners
 
@@ -154,23 +163,22 @@ class MainMenu {
 
         startFight.addEventListener("click", () => {
             if(startFight.style.color === "red"){
-                console.log("transfer to fight screen")
-                game.fightScreen.displayFightScreen()
-                game.fightScreen.createEnemySelector()
-                game.fightScreen.createMessageDisplay()
+                if(game.fightScreen.characterDisplayBox === undefined) {
+                    game.fightScreen.displayFightScreen()
+                    game.fightScreen.createEnemySelector()
+                    game.fightScreen.createMessageDisplay()
+                    this.fightSelectContainer.remove()
+                    console.log("transfer to fight screen")
+                }
+                else {
+                    game.fightScreen.characterDisplayBox.style.display = "flex"
+                    game.fightScreen.fightContainer.style.display = "flex"
+                    this.fightSelectContainer.remove()
+                    console.log("transfer to fight screen")
+                }
+               
             }
         })
 
-        
-
-        /* const startFight = document.querySelector("#startCombat")
-
-        <span id='selectFight'>Select Fight</span> */
-
-        /* startFight.addEventListener("click", () => {
-            if(startFight.style.color = "red") {
-               console.log("transfer to selectfight")
-            }
-           }) */
     }
 }

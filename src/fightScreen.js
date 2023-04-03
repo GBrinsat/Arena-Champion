@@ -3,6 +3,11 @@ class FightScreen {
 
     constructor() {
         this.attackType
+        this.surrender = false
+
+        this.characterDisplayBox
+        this.messageDisplay
+        this.fightContainer
     }
     
     displayFightScreen() {
@@ -11,21 +16,21 @@ class FightScreen {
 
         //create new elements
 
-        const fightContainer = document.createElement("div")
-        fightContainer.className = "fightContainer"
+        this.fightContainer = document.createElement("div")
+        this.fightContainer.className = "fightContainer"
 
-        fightContainer.innerHTML = "<div class='options'><span id='attack'>Attack</span><span id='magic'>Magic</span><span id='dodge'>Dodge</span><span id='surrender'>Surrender</span></div><div class='statusField'><span id='name'>Name</span><span id='hp'></span>HP:<span id='mana'>Mana: </span></div"
+        this.fightContainer.innerHTML = "<div class='options'><span id='attack'>Attack</span><span id='magic'>Magic</span><span id='dodge'>Dodge</span><span id='surrender'>Surrender</span></div><div class='statusField'><span id='name'>Name</span><span id='hp'></span>HP:<span id='mana'>Mana: </span></div"
         
-        const characterDisplayBox = document.createElement("div")
-        characterDisplayBox.className = "characterDisplayBox"
+        this.characterDisplayBox = document.createElement("div")
+        this.characterDisplayBox.className = "characterDisplayBox"
 
-        characterDisplayBox.innerHTML = "<div class='playerDisplay'></div><div class='enemyDisplayOne'></div><div class='enemyDisplayTwo'></div>"
+        this.characterDisplayBox.innerHTML = "<div class='playerDisplay'></div><div class='enemyDisplayOne'></div><div class='enemyDisplayTwo'></div>"
 
         const parent = document.querySelector("#canvas")
         const child = document.querySelector("#defaultCanvas0")
 
-        parent.insertBefore(fightContainer, child)
-        parent.insertBefore(characterDisplayBox, child)
+        parent.insertBefore(this.fightContainer, child)
+        parent.insertBefore(this.characterDisplayBox, child)
     
         //add event listeners
 
@@ -49,14 +54,14 @@ class FightScreen {
         attack.addEventListener("click", () => {
             if(attack.style.color === "red"){
                 this.attackType = "attack"
-                document.querySelector(".enemySelector").style.display = "block"
+                document.querySelector(".enemySelector").style.display = "flex"
             }
         })
 
         magic.addEventListener("click", () => {
             if(magic.style.color === "red"){
                 this.attackType = "magic"
-                document.querySelector(".enemySelector").style.display = "block"
+                document.querySelector(".enemySelector").style.display = "flex"
             }
         })
 
@@ -68,7 +73,9 @@ class FightScreen {
 
         surrender.addEventListener("click", () => {
             if(surrender.style.color === "red"){
-                // display message, return to menu
+               this.messageDisplay.style.display = "flex"
+               document.querySelector("#message").innerText = "You give up and return to the barracks..."
+               this.surrender = true
             }
         })
     }
@@ -131,17 +138,17 @@ class FightScreen {
 
         createMessageDisplay() {
 
-            const messageDisplay = document.createElement("div")
-            messageDisplay.className = "messageDisplay"
+            this.messageDisplay = document.createElement("div")
+            this.messageDisplay.className = "messageDisplay"
 
-            messageDisplay.innerHTML = "<span>Test</span><span id='continue'>Continue</span>"
+            this.messageDisplay.innerHTML = "<span id='message'>Text</span><span id='continue'>Continue</span>"
 
             const parent = document.querySelector("#canvas")
             const child = document.querySelector("#defaultCanvas0")
     
-            parent.insertBefore(messageDisplay, child)
+            parent.insertBefore(this.messageDisplay, child)
     
-            //messageDisplay.style.display = "none"
+            this.messageDisplay.style.display = "none"
 
             const cont = document.querySelector("#continue")
             cont.addEventListener("mouseover", () => {
@@ -151,7 +158,15 @@ class FightScreen {
                 cont.style.color = "black"
             })
             cont.addEventListener("click", () => {
-                messageDisplay.style.display = "none"
+                if(this.surrender === true) {
+                    this.characterDisplayBox.style.display = "none"
+                    this.messageDisplay.style.display = "none"
+                    this.fightContainer.style.display = "none"
+                    document.querySelector(".characterBox").style.display = "flex"
+                    document.querySelector(".menu").style.display = "flex"
+                    this.surrender = false
+                }
+               this.messageDisplay.style.display = "none"
             })
         }
     }
