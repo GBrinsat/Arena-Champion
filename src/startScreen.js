@@ -1,3 +1,5 @@
+var isClicked = false
+
 class startScreen {
 
     startGame() {
@@ -10,20 +12,12 @@ class startScreen {
             headline.style.display = "none"
             instructions.style.display = "none"
             document.querySelector("canvas").className = "background-animation"
-
-            this.transitionToCharacter()
-            
+        
+            setTimeout(function() {
+                isClicked = true
+            }, 7000)
         })
     }
     
-    transitionToCharacter() {
-
-        test()
-
-    }
-}
-
-function test() {
-    console.log("test works")
 }
 

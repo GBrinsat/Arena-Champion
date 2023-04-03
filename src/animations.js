@@ -1,18 +1,22 @@
 
 class Animations {
     constructor() {
-        this.idleGif_load
-        this.idleGif_create
         this.gif
     }
 
-    playerCharacterScreen(x, y) {
+   /*  playerCharacterScreen(x, y) {
         //use this to position gif
-    }
+    } */
 
     preload() {
         
         this.gif = loadGif("../assets/idle.gif")
+    }
+
+    draw() {
+        clear()
+        console.log("isdrawing")
+        image(this.gif, 387, 170)
     }
 
 

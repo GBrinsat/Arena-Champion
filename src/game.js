@@ -15,9 +15,5 @@ class Game {
     draw() {
         clear()
         //console.log("gameDraw")
-        this.player.draw()
-        this.character.displayCharacter()
-        
-        //rect(387, 170, 250, 185)
     }
 }

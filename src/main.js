@@ -16,8 +16,12 @@ function setup() {
 
 function draw() {
     game.draw()     
-    game.character.draw()
+    //game.character.draw()
+    if(isClicked === true) {
+        animations.draw()
+    }
 }
+
 
 /* for navigating menus
 function keyPressed() {
