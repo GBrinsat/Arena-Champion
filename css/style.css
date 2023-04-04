@@ -67,12 +67,13 @@ h1 {
 }
 
 p {
-    background-color: rgb(254,225,184);
+    background-image: url("../assets/Instructions.png");
     position: absolute;
     top: 250px;
     font-size: 40px;
     width: 400px;
-    height: 200px;
+    height: 138px;
+    padding: 20px;
     text-align: center;
 
     animation-name: instructions-fadein;
@@ -155,7 +156,7 @@ canvas {
 .characterDisplay {
     width: 300px;
     height: 300px;
-    background-color: white;
+    background-image: url("../assets/characterDisplay.png");
 }
 
 .characterStats {
@@ -166,7 +167,7 @@ canvas {
     padding-top: 25px;
     width: 350px;
     height: 275px;
-    background-color: white;
+    background-image: url("../assets/characterStats.png");
 
 }
 
@@ -177,7 +178,7 @@ canvas {
     position: absolute;
     top: 550px;
     
-    background-color: white;
+    background-image: url("../assets/menu.png");
     height: 40px;
     width: 750px;
     padding-top: 10px;
