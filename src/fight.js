@@ -15,12 +15,16 @@ class Fight {
     generateFightOne() {
 
         this.round = 1
+        game.player.hp = game.player.hpMax
+        game.player.mana = game.player.manaMax
+        document.querySelector("#hpFight").innerText = "HP: " + game.player.hpMax + " / " + game.player.hpMax
+        document.querySelector("#manaFight").innerText = "Mana: " + game.player.manaMax + " / " + game.player.manaMax
 
         //enemies
 
         this.enemyOne.name = "Goblin"
         this.enemyOne.hp = 10
-        this.enemyOne.str = 3
+        this.enemyOne.str = 20
 
         this.enemyTwo.hp = 0
 
@@ -39,6 +43,10 @@ class Fight {
     generateFightTwo() {
 
         this.round = 1
+        game.player.hp = game.player.hpMax
+        game.player.mana = game.player.manaMax
+        document.querySelector("#hpFight").innerText = "HP: " + game.player.hpMax + " / " + game.player.hpMax
+        document.querySelector("#manaFight").innerText = "Mana: " + game.player.manaMax + " / " + game.player.manaMax
 
         //enemies
 
@@ -67,6 +75,10 @@ class Fight {
     generateFightThree() {
 
         this.round = 1
+        game.player.hp = game.player.hpMax
+        game.player.mana = game.player.manaMax
+        document.querySelector("#hpFight").innerText = "HP: " + game.player.hpMax + " / " + game.player.hpMax
+        document.querySelector("#manaFight").innerText = "Mana: " + game.player.manaMax + " / " + game.player.manaMax
 
         //enemies
 
@@ -94,6 +106,10 @@ class Fight {
     generateFightFour() {
 
         this.round = 1
+        game.player.hp = game.player.hpMax
+        game.player.mana = game.player.manaMax
+        document.querySelector("#hpFight").innerText = "HP: " + game.player.hpMax + " / " + game.player.hpMax
+        document.querySelector("#manaFight").innerText = "Mana: " + game.player.manaMax + " / " + game.player.manaMax
 
         //enemies
 
@@ -123,6 +139,38 @@ class Fight {
         }
     }
 
+    enemyTurn() {
+
+        game.fightScreen.enemyMessageDisplay.style.display = "flex"
+
+        if(this.enemyOne.hp > 0 && this.enemyTwo.hp > 0) {
+            this.enemyOne.attack(1)
+        }
+        else if(this.enemyOne.hp > 0 && this.enemyTwo.hp < 1) {
+            this.enemyOne.attack(2)
+        }
+        else if(this.enemyOne.hp < 1 && this.enemyTwo.hp > 0) {
+            this.enemyOne.attack(3)
+        }
+        
+    }
+
+    outOfMana() {
+        game.fightScreen.messageDisplay.style.display = "flex"
+
+        document.querySelector("#message").innerText = "You are out of Mana!" 
+    }
+
+    playerDefeat() {
+
+        console.log("gameover")
+        game.fightScreen.messageDisplay.style.display = "flex"
+        game.fightScreen.surrender = true
+
+        document.querySelector("#message").innerText = "Your enemies defeated you, try again!" 
+
+    }
+
     reward() {
         console.log("rewarding")
         if(game.player.level < this.level && game.player.rank < this.rewardRank) {
@@ -149,6 +197,48 @@ class Fight {
                 break;
             }
 
+            switch(game.player.level) {
+                case 2 :    document.querySelector("#hp").innerText = "HP: 25"
+                            document.querySelector("#mana").innerText = "Mana: 15"
+                            document.querySelector("#strength").innerText = "Strength: 7"
+                            document.querySelector("#intelligence").innerText = "Intelligence: 6"
+                            game.player.hpMax = 25
+                            game.player.manaMax = 15
+                            game.player.str = 7
+                            game.player.int = 6
+                            break;
+
+                case 3 :    document.querySelector("#hp").innerText = "HP: 30"
+                            document.querySelector("#mana").innerText = "Mana: 20"
+                            document.querySelector("#strength").innerText = "Strength: 10"
+                            document.querySelector("#intelligence").innerText = "Intelligence: 8"
+                            game.player.hpMax = 30
+                            game.player.manaMax = 20
+                            game.player.str = 10
+                            game.player.int = 8
+                            break;
+
+                case 4 :    document.querySelector("#hp").innerText = "HP: 35"
+                            document.querySelector("#mana").innerText = "Mana: 25"
+                            document.querySelector("#strength").innerText = "Strength: 12"
+                            document.querySelector("#intelligence").innerText = "Intelligence: 12"
+                            game.player.hpMax = 35
+                            game.player.manaMax = 25
+                            game.player.str = 12
+                            game.player.int = 12
+                            break;
+
+                case 5 :    document.querySelector("#hp").innerText = "HP: 50"
+                            document.querySelector("#mana").innerText = "Mana: 30"
+                            document.querySelector("#strength").innerText = "Strength: 20"
+                            document.querySelector("#intelligence").innerText = "Intelligence: 20"
+                            game.player.hpMax = 50
+                            game.player.manaMax = 30
+                            game.player.str = 20
+                            game.player.int = 20
+                            break;
+            }
+
         }
         else {
             document.querySelector("#message").innerText = "You won the fight! You earn " + this.rewardGold + " Gold!"
@@ -157,20 +247,6 @@ class Fight {
 
             document.querySelector("#gold").innerText = "Gold: " + game.player.gold
         }
-    }
-
-    enemyTurn() {
-        game.fightScreen.messageDisplay.style.display = "flex"
-        if(this.enemyOne.hp > 0 && this.enemyTwo.hp > 0) {
-            this.enemyOne.attack(1)
-        }
-        else if(this.enemyOne.hp > 0 && this.enemyTwo.hp < 1) {
-            this.enemyOne.attack(2)
-        }
-        else if(this.enemyOne.hp < 1 && this.enemyTwo.hp > 0) {
-            this.enemyOne.attack(3)
-        }
-        
     }
 
 }

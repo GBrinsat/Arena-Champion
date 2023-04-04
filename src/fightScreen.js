@@ -8,6 +8,7 @@ class FightScreen {
         this.characterDisplayBox
         this.messageDisplay
         this.fightContainer
+        this.enemyMessageDisplay
     }
     
     displayFightScreen() {
@@ -19,8 +20,8 @@ class FightScreen {
         this.fightContainer = document.createElement("div")
         this.fightContainer.className = "fightContainer"
 
-        this.fightContainer.innerHTML = "<div class='options'><span id='attack'>Attack</span><span id='magic'>Magic</span><span id='dodge'>Dodge</span><span id='surrender'>Surrender</span></div><div class='statusField'><span id='name'>Name</span><span id='hp'></span>HP:<span id='mana'>Mana: </span></div"
-        
+        this.fightContainer.innerHTML = "<div class='options'><span id='attack'>Attack</span><span id='magic'>Magic</span><span id='dodge'>Dodge</span><span id='surrender'>Surrender</span></div><div class='statusField'><span id='nameFight'>Name</span><span id='hpFight'>HP: </span><span id='manaFight'>Mana: </span></div"
+
         this.characterDisplayBox = document.createElement("div")
         this.characterDisplayBox.className = "characterDisplayBox"
 
@@ -31,6 +32,10 @@ class FightScreen {
 
         parent.insertBefore(this.fightContainer, child)
         parent.insertBefore(this.characterDisplayBox, child)
+
+        document.querySelector("#nameFight").innerText = "Name: " + game.player.name
+        document.querySelector("#hpFight").innerText = "HP: " + game.player.hp + " / " + game.player.hpMax
+        document.querySelector("#manaFight").innerText = "Mana: " + game.player.mana + " / " + game.player.manaMax
     
         //add event listeners
 
@@ -127,11 +132,16 @@ class FightScreen {
          selectorTwo.addEventListener("click", () => {
             if(this.attackType === "attack") {
                 game.player.attack(game.fight.enemyTwo)
+                enemySelector.style.display = "none"
             }
-            else if(this.attackType === "magic") {
+            else if(this.attackType === "magic" && game.player.mana > 5) {
                 game.player.magic(game.fight.enemyTwo)
+                enemySelector.style.display = "none"
             }
-            enemySelector.style.display = "none"
+            else { 
+                game.fight.outOfMana()
+                enemySelector.style.display = "none"
+            }
          })
         }
 
@@ -168,8 +178,39 @@ class FightScreen {
                 else if(game.fight.round % 2 === 0) {
                     console.log("enemy turn")
                     game.fight.enemyTurn()
+                    this.messageDisplay.style.display = "none"
                 }
                else {this.messageDisplay.style.display = "none"}
+            })
+        }
+
+        createEnemyMessageDisplay() {
+
+            this.enemyMessageDisplay = document.createElement("div")
+            this.enemyMessageDisplay.className = "enemyMessageDisplay"
+
+            this.enemyMessageDisplay.innerHTML = "<span id='enemyMessage'>Text</span><span id='enemyContinue'>Continue</span>"
+
+            const parent = document.querySelector("#canvas")
+            const child = document.querySelector("#defaultCanvas0")
+    
+            parent.insertBefore(this.enemyMessageDisplay, child)
+    
+            this.enemyMessageDisplay.style.display = "none"
+
+            const cont = document.querySelector("#enemyContinue")
+            cont.addEventListener("mouseover", () => {
+                cont.style.color = "red"
+            })
+            cont.addEventListener("mouseout", () => {
+                cont.style.color = "black"
+            })
+            cont.addEventListener("click", () => {
+            
+                if(game.player.hp < 1){
+                    game.fight.playerDefeat()
+                }
+               this.enemyMessageDisplay.style.display = "none"
             })
         }
     }

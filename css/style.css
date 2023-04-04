@@ -252,12 +252,13 @@ canvas {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: flex-end;
 
     position: absolute;
-    top: 300px;
+    top: 244px;
 
     width: 800px;
-    height: 185px;
+    height: 230px;
 
 }
 
@@ -270,11 +271,16 @@ canvas {
 .enemyDisplayOne {
     background-color: white;
     width: 100px;
+    height: 185px;
 
 }
 
 .enemyDisplayTwo {
-
+    background-color: white;
+    width: 100px;
+    height: 185px;
+    
+    align-self: flex-start;
 }
 
 .enemySelector {
@@ -293,6 +299,21 @@ canvas {
 }
 
 .messageDisplay {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    position: absolute;
+    top: 524px;
+
+    
+    height: 150px;
+    width: 874px;
+    padding-left: 50px;
+    background-color: grey;
+}
+
+.enemyMessageDisplay {
     display: flex;
     flex-direction: column;
     justify-content: space-around;

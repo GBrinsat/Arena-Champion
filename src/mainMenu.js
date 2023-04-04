@@ -169,6 +169,7 @@ class MainMenu {
                     game.fightScreen.displayFightScreen()
                     game.fightScreen.createEnemySelector()
                     game.fightScreen.createMessageDisplay()
+                    game.fightScreen.createEnemyMessageDisplay()
                     this.fightSelectContainer.remove()
                     if(this.stageOneSelected === true){
                         game.fight.generateFightOne()
