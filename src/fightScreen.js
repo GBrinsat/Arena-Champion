@@ -108,11 +108,10 @@ class FightScreen {
          })
          selectorOne.addEventListener("click", () => {
             if(this.attackType === "attack") {
-                console.log("attack")
-                //use attack function on enemy one
+                game.player.attack(game.fight.enemyOne)
             }
             else if(this.attackType === "magic") {
-                console.log("magic")
+                game.player.magic(game.fight.enemyOne)
             }
             enemySelector.style.display = "none"
          })
@@ -127,10 +126,10 @@ class FightScreen {
          })
          selectorTwo.addEventListener("click", () => {
             if(this.attackType === "attack") {
-                //use attack function on enemy two
+                game.player.attack(game.fight.enemyTwo)
             }
             else if(this.attackType === "magic") {
-                console.log("magic")
+                game.player.magic(game.fight.enemyTwo)
             }
             enemySelector.style.display = "none"
          })
@@ -166,7 +165,11 @@ class FightScreen {
                     document.querySelector(".menu").style.display = "flex"
                     this.surrender = false
                 }
-               this.messageDisplay.style.display = "none"
+                else if(game.fight.round % 2 === 0) {
+                    console.log("enemy turn")
+                    game.fight.enemyTurn()
+                }
+               else {this.messageDisplay.style.display = "none"}
             })
         }
     }

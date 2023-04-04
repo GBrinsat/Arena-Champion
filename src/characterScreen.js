@@ -42,7 +42,6 @@ class CharacterScreen {
             const nameInput = document.querySelector(".nameInput").remove()
             enterArena.remove()
             game.mainMenu.displayMenu()
-
         })
         
     }

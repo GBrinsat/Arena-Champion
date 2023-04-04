@@ -20,7 +20,7 @@ class MainMenu {
         menu.className = "menu"
         characterBox.className = "characterBox"
 
-        characterBox.innerHTML = "<div class='characterDisplay'></div><div class ='characterStats'><span>Name: </span><span>Level:</span><span>Rank: </span><br><span>HP: </span><span>Mana: </span><span>Strength: </span><span>Intelligence: </span><span>Gold: </span></div>"
+        characterBox.innerHTML = "<div class='characterDisplay'></div><div class ='characterStats'><span id='name'></span><span id='level'>Level:</span><span id='rank'>Rank: Rookie</span><br><span id='hp'>HP: </span><span id='mana'>Mana: </span><span id='strength'>Strength: </span><span id='intelligence'>Intelligence: </span><span id='gold'>Gold: </span></div>"
         menu.innerHTML = "<span id='selectFight'>Start Combat</span><span id='shop'>Enter Shop</span>"
 
         const parent = document.querySelector("#canvas")
@@ -51,15 +51,6 @@ class MainMenu {
         selectFight.addEventListener("click", () => {
             if(selectFight.style.color = "red") {
                 this.displayFightSelect()
-
-                /* if(this.fightSelectContainer === undefined) {
-                    this.displayFightSelect()
-                }
-                else {
-                    this.fightSelectContainer.style.display === "flex"
-                    document.querySelector(".characterBox").style.display = "none"
-                    document.querySelector(".menu").style.display = "none"
-            } */
               }
            })
 
@@ -68,6 +59,17 @@ class MainMenu {
                console.log("transfer to shop")
             }
            })
+
+        //add display values
+        console.log(document.querySelector("#name"))
+        document.querySelector("#name").innerText = "Name: " + game.player.name
+        document.querySelector("#level").innerText = "Level: " + game.player.level
+        document.querySelector("#rank").innerText = "Rank: " + game.player.rank
+        document.querySelector("#hp").innerText = "HP: " + game.player.hp
+        document.querySelector("#mana").innerText = "Mana: " + game.player.mana
+        document.querySelector("#strength").innerText = "Strength: " + game.player.str
+        document.querySelector("#intelligence").innerText = "Intelligence: " + game.player.int
+        document.querySelector("#gold").innerText = "Gold: " + game.player.gold
     }
 
     displayFightSelect() {
@@ -109,10 +111,10 @@ class MainMenu {
 
         stageOne.addEventListener("click", () => {
             if(stageOne.style.color === "red"){
-                this.stageOneSelected === true
-                this.stageTwoSelected === false
-                this.stageThreeSelected === false
-                this.stageFourSelected === false
+                this.stageOneSelected = true
+                this.stageTwoSelected = false
+                this.stageThreeSelected = false
+                this.stageFourSelected = false
                 stageOne.style.textDecoration = "underline"
                 stageTwo.style.textDecoration = "none"
                 stageThree.style.textDecoration = "none"
@@ -122,10 +124,10 @@ class MainMenu {
 
         stageTwo.addEventListener("click", () => {
             if(stageTwo.style.color === "red"){
-                this.stageOneSelected === false
-                this.stageTwoSelected === true
-                this.stageThreeSelected === false
-                this.stageFourSelected === false
+                this.stageOneSelected = false
+                this.stageTwoSelected = true
+                this.stageThreeSelected = false
+                this.stageFourSelected = false
                 stageOne.style.textDecoration = "none"
                 stageTwo.style.textDecoration = "underline"
                 stageThree.style.textDecoration = "none"
@@ -135,10 +137,10 @@ class MainMenu {
 
         stageThree.addEventListener("click", () => {
             if(stageThree.style.color === "red"){
-                this.stageOneSelected === false
-                this.stageTwoSelected === false
-                this.stageThreeSelected === true
-                this.stageFourSelected === false
+                this.stageOneSelected = false
+                this.stageTwoSelected = false
+                this.stageThreeSelected = true
+                this.stageFourSelected = false
                 stageOne.style.textDecoration = "none"
                 stageTwo.style.textDecoration = "none"
                 stageThree.style.textDecoration = "underline"
@@ -148,10 +150,10 @@ class MainMenu {
 
         stageFour.addEventListener("click", () => {
             if(stageFour.style.color === "red"){
-                this.stageOneSelected === false
-                this.stageTwoSelected === false
-                this.stageThreeSelected === false
-                this.stageFourSelected === true
+                this.stageOneSelected = false
+                this.stageTwoSelected = false
+                this.stageThreeSelected = false
+                this.stageFourSelected = true
                 stageOne.style.textDecoration = "none"
                 stageTwo.style.textDecoration = "none"
                 stageThree.style.textDecoration = "none"
@@ -168,14 +170,50 @@ class MainMenu {
                     game.fightScreen.createEnemySelector()
                     game.fightScreen.createMessageDisplay()
                     this.fightSelectContainer.remove()
-                    console.log("transfer to fight screen")
+                    if(this.stageOneSelected === true){
+                        game.fight.generateFightOne()
+                        console.log("transfer to fight screen one")
+                    }
+                    else if(this.stageTwoSelected === true){
+                        game.fight.generateFightTwo()
+                        console.log("transfer to fight screen two")
+                    }
+                    else if(this.stageThreeSelected === true){
+                        game.fight.generateFightThree()
+                        console.log("transfer to fight screen three")
+                    }
+                    else if(this.stageFourSelected === true){
+                        game.fight.generateFightFour()
+                        console.log("transfer to fight screen four")
+                    }
+                    
                 }
                 else {
                     game.fightScreen.characterDisplayBox.style.display = "flex"
                     game.fightScreen.fightContainer.style.display = "flex"
                     this.fightSelectContainer.remove()
-                    console.log("transfer to fight screen")
+                    if(this.stageOneSelected === true){
+                        game.fight.generateFightOne()
+                        console.log("transfer to fight screen one")
+                        this.stageOneSelected = false
+                    }
+                    else if(this.stageTwoSelected === true){
+                        game.fight.generateFightTwo()
+                        console.log("transfer to fight screen two")
+                        this.stageTwoSelected = false
+                    }
+                    else if(this.stageThreeSelected === true){
+                        game.fight.generateFightThree()
+                        console.log("transfer to fight screen three")
+                        this.stageThreeSelected = false
+                    }
+                    else if(this.stageFourSelected === true){
+                        game.fight.generateFightFour()
+                        console.log("transfer to fight screen four")
+                        this.stageFourSelected = false
+                    }
                 }
+                
                
             }
         })
