@@ -14,6 +14,10 @@ class Fight {
 
     generateFightOne() {
 
+        game.mainMenu.stageOneSelected = false
+
+        animations.fightOne = true
+
         this.round = 1
         game.player.hp = game.player.hpMax
         game.player.mana = game.player.manaMax
@@ -22,7 +26,7 @@ class Fight {
 
         //enemies
 
-        this.enemyOne.name = "Goblin"
+        this.enemyOne.name = "Floating Eyeball"
         this.enemyOne.hp = 10
         this.enemyOne.str = 20
 
@@ -34,13 +38,18 @@ class Fight {
         this.level = 2
         this.rewardRank = 1
 
-        document.querySelector("#selectorOne").innerText = "Goblin"
+        document.querySelector("#selectorOne").innerText = "Floating Eyeball"
         document.querySelector("#selectorTwo").innerText = ""
 
         console.log(this.enemyOne)
     }
 
     generateFightTwo() {
+
+        game.mainMenu.stageTwoSelected = false
+
+        animations.fightTwoEnemyOne = true
+        animations.fightTwoEnemyTwo = true
 
         this.round = 1
         game.player.hp = game.player.hpMax
@@ -74,6 +83,11 @@ class Fight {
 
     generateFightThree() {
 
+        game.mainMenu.stageThreeSelected = false
+
+        animations.fightThreeEnemyOne = true
+        animations.fightThreeEnemyTwo = true
+
         this.round = 1
         game.player.hp = game.player.hpMax
         game.player.mana = game.player.manaMax
@@ -105,6 +119,10 @@ class Fight {
 
     generateFightFour() {
 
+        animations.fightFour = true
+
+        game.mainMenu.stageFourSelected = false
+
         this.round = 1
         game.player.hp = game.player.hpMax
         game.player.mana = game.player.manaMax
@@ -131,8 +149,9 @@ class Fight {
     }
     
     disableEnemy(enemy) {
-        if(enemy === this.enemyOne) {
+        if(enemy === this.enemyOne && animations.fightTwoEnemyOne === true) {
             document.querySelector("#selectorOne").innerText = ""
+            fightTwoEnemyOne = false
         }
         else {
             document.querySelector("#selectorTwo").innerText = ""
@@ -172,7 +191,9 @@ class Fight {
     }
 
     reward() {
-        console.log("rewarding")
+
+        game.fightScreen.surrender = true
+
         if(game.player.level < this.level && game.player.rank < this.rewardRank) {
             document.querySelector("#message").innerText = "You won the fight! You earn " + this.rewardGold + " Gold and Level Up to Level " + this.level + " !"
            
@@ -248,6 +269,5 @@ class Fight {
             document.querySelector("#gold").innerText = "Gold: " + game.player.gold
         }
     }
-
 }
 

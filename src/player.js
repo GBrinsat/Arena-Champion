@@ -6,7 +6,7 @@ class Player {
         this.image
         this.name
         this.level = 1
-        this.rank = 0
+        this.rank = "Rookie"
 
         this.hpMax = 20
         this.manaMax = 10
@@ -21,7 +21,11 @@ class Player {
 
     attack(enemy) {
 
+        game.attackSound.play()
+
         game.fight.round += 1
+        animations.playerAttack = true
+        animations.playerIdle = false
         
         enemy.hp -= this.str
         document.querySelector("#message").innerText = "You slashed the " + enemy.name + " for " + this.str + " points of damage!"
@@ -29,7 +33,7 @@ class Player {
         game.fightScreen.surrender = false
 
         if(game.fight.enemyOne.hp < 1 && game.fight.enemyTwo.hp < 1) {
-            game.fightScreen.surrender = true
+            animations.playerIdle = false
             game.fight.reward()
         }
         else if(enemy.hp < 1) {
@@ -40,7 +44,11 @@ class Player {
 
     magic(enemy) {
 
+        game.magicSound.play()
+
         game.fight.round += 1
+        animations.playerMagic = true
+        animations.playerIdle = false
         
         this.mana -= 5
         document.querySelector("#manaFight").innerText = this.mana + " / " + this.manaMax

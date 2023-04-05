@@ -51,6 +51,7 @@ class MainMenu {
         selectFight.addEventListener("click", () => {
             if(selectFight.style.color = "red") {
                 this.displayFightSelect()
+                animations.playerIdle = false
               }
            })
 
@@ -82,7 +83,7 @@ class MainMenu {
         this.fightSelectContainer = document.createElement("div")
         this.fightSelectContainer.className = "fightSelectContainer"
 
-        this.fightSelectContainer.innerHTML = "<div class='fightSelect'><span id='stageOne'>Teststage 1</span><span id='stageTwo'>Teststage 2</span><span id='stageThree'>Teststage 3</span><span id='stageFour'>Teststage 4</span></div><div class='startFight'><span id='startFight'>Start Fight</span></div>"
+        this.fightSelectContainer.innerHTML = "<div class='fightSelect'><span id='stageOne'>1 : Eyesore</span><span id='stageTwo'>2 : The Terrible Twins</span><span id='stageThree'>3 : Death and Pestilence</span><span id='stageFour'>4 : The Ancient One</span></div><div class='startFight'><span id='startFight'>Start Fight</span></div>"
 
         const parent = document.querySelector("#canvas")
         const child = document.querySelector("#defaultCanvas0")
@@ -165,12 +166,16 @@ class MainMenu {
 
         startFight.addEventListener("click", () => {
             if(startFight.style.color === "red"){
+
+                animations.playerIdle = true
+
                 if(game.fightScreen.characterDisplayBox === undefined) {
                     game.fightScreen.displayFightScreen()
                     game.fightScreen.createEnemySelector()
                     game.fightScreen.createMessageDisplay()
                     game.fightScreen.createEnemyMessageDisplay()
                     this.fightSelectContainer.remove()
+
                     if(this.stageOneSelected === true){
                         game.fight.generateFightOne()
                         console.log("transfer to fight screen one")
@@ -186,6 +191,9 @@ class MainMenu {
                     else if(this.stageFourSelected === true){
                         game.fight.generateFightFour()
                         console.log("transfer to fight screen four")
+                        game.backgroundMusic.pause()
+                        game.bossMusic.play()
+                        game.bossMusic.setVolume(0.5)
                     }
                     
                 }

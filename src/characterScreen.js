@@ -1,12 +1,11 @@
 
-var isClicked = false
 
 class CharacterScreen {
 
     displayCharacter() {
         
         setTimeout(function() {
-            isClicked = true
+            animations.characterScreen = true
             const nameInput = document.createElement("input")
             nameInput.className = "nameInput"
             nameInput.placeholder = "Enter your Name"
@@ -37,11 +36,16 @@ class CharacterScreen {
         console.log(enterArena)
         enterArena.addEventListener("click", () => {
             game.player.name = document.querySelector(".nameInput").value
-            animations.stopGif()
 
             const nameInput = document.querySelector(".nameInput").remove()
             enterArena.remove()
             game.mainMenu.displayMenu()
+
+            animations.characterScreen = false
+            
+            console.log(animations.attack.totalFrames())
+            console.log(animations.idle.totalFrames())
+
         })
         
     }

@@ -124,10 +124,14 @@ canvas {
     font-size: 32px;
     text-align: center;
     position: absolute;
-    padding: 0;
+    padding: 10px 0 60px 0;
     margin: 0;
     width: 262px;
+    height: 30px;
     top: 430px;
+    border: none;
+    background-image: url("../assets/nameInput.png");
+    background-color: none;
 }
 
 .enterArena{
@@ -138,7 +142,10 @@ canvas {
     padding: 0;
     margin: 0;
     width: 266px;
-    top: 480px;
+    height: 30px;
+    top: 490px;
+    border: none;
+    background: none;
 }
 
 .characterBox {
@@ -204,12 +211,12 @@ canvas {
     align-items: center;
 
     height: 300px;
-    background-color: white;
+    background-image: url("../assets/fightSelect.png");
 }
 
 .startFight {
     text-align: center;
-    background-color: white;
+    background-image: url("../assets/startFight.png");
     width: 400px;
     height: 40px;
     padding-top: 10px;
@@ -223,7 +230,7 @@ canvas {
     position: absolute;
     top: 524px;
 
-    height: 150px;
+    height: 170px;
     width: 926px;
 }
 
@@ -232,7 +239,7 @@ canvas {
     flex-direction: column;
     justify-content: space-around;
 
-    background-color: white;
+    background-image: url("../assets/options.png");
     width: 150px;
     padding-left: 50px;
 
@@ -243,13 +250,13 @@ canvas {
     flex-direction: column;
     justify-content: space-evenly;
 
-    background-color: white;
+    background-image: url("../assets/statusField.png");
     width: 624px;
     padding-left: 50px;
     
 }
 
-.characterDisplayBox {
+/* .characterDisplayBox {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -264,25 +271,24 @@ canvas {
 }
 
 .playerDisplay {
-    background-color: white;
+    background-image: url("../assets/attack12.png");
     width: 250px;
     height: 185px;
 }
 
 .enemyDisplayOne {
-    background-color: white;
-    width: 100px;
+    background-image: url("../assets/Mushroom.png");
+    width: 150px;
     height: 185px;
 
 }
-
 .enemyDisplayTwo {
     background-color: white;
-    width: 100px;
+    width: 200px;
     height: 185px;
     
     align-self: flex-start;
-}
+} */
 
 .enemySelector {
     display: flex;
@@ -293,10 +299,10 @@ canvas {
     top: 524px;
 
     
-    height: 150px;
-    width: 874px;
+    height: 170px;
+    width: 876px;
     padding-left: 50px;
-    background-color: grey;
+    background-image: url("../assets/message.png");
 }
 
 .messageDisplay {
@@ -308,10 +314,10 @@ canvas {
     top: 524px;
 
     
-    height: 150px;
-    width: 874px;
+    height: 170px;
+    width: 876px;
     padding-left: 50px;
-    background-color: grey;
+    background-image: url("../assets/message.png");
 }
 
 .enemyMessageDisplay {
@@ -323,8 +329,8 @@ canvas {
     top: 524px;
 
     
-    height: 150px;
-    width: 874px;
+    height: 170px;
+    width: 876px;
     padding-left: 50px;
-    background-color: grey;
+    background-image: url("../assets/message.png");
 }

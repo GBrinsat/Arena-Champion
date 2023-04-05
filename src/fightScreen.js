@@ -134,7 +134,7 @@ class FightScreen {
                 game.player.attack(game.fight.enemyTwo)
                 enemySelector.style.display = "none"
             }
-            else if(this.attackType === "magic" && game.player.mana > 5) {
+            else if(this.attackType === "magic" && game.player.mana > 4) {
                 game.player.magic(game.fight.enemyTwo)
                 enemySelector.style.display = "none"
             }
@@ -168,12 +168,18 @@ class FightScreen {
             })
             cont.addEventListener("click", () => {
                 if(this.surrender === true) {
+                    animations.playerIdle = false
                     this.characterDisplayBox.style.display = "none"
                     this.messageDisplay.style.display = "none"
                     this.fightContainer.style.display = "none"
                     document.querySelector(".characterBox").style.display = "flex"
                     document.querySelector(".menu").style.display = "flex"
                     this.surrender = false
+                    animations.fightOne = false
+                    animations.fightTwo = false
+                    animations.fightThree = false
+                    animations.fightFour = false
+                    animations.playerIdle = false
                 }
                 else if(game.fight.round % 2 === 0) {
                     console.log("enemy turn")

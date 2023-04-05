@@ -10,6 +10,9 @@ class startScreen {
         
             game.characterScreen.displayCharacter()
 
+            game.backgroundMusic.play()
+            game.backgroundMusic.setVolume(0.3)
+
         })
     }
     

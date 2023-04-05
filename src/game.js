@@ -8,12 +8,18 @@ class Game {
         this.mainMenu = new MainMenu()
         this.fightScreen = new FightScreen()
         this.fight = new Fight()
+        this.backgroundMusic
+        this.bossMusic
+        this.attackSound
+        this.magicSound
 
     }
 
     preload() {
-
-        console.log("preloading game")
         this.startScreen.startGame() 
+        this.backgroundMusic = loadSound("../assets/music/battle-of-the-dragons-8037.mp3")
+        this.bossMusic = loadSound("../assets/music/BossFight.mp3")
+        this.attackSound = loadSound("../assets/music/Swordattack.mp3")
+        this.magicSound = loadSound("../assets/music/Magic.wav")
     }
 }

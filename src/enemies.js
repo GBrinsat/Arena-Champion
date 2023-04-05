@@ -23,9 +23,6 @@ class Enemy {
 
         document.querySelector("#hpFight").innerText = "HP: " + game.player.hp + " / " + game.player.hpMax
 
-        /* if(game.player.hp < 1){
-            game.fight.playerDefeat()
-        } */
         }
         else if (enemy === 2) {
 
@@ -39,9 +36,6 @@ class Enemy {
 
             document.querySelector("#hpFight").innerText = "HP: " + game.player.hp + " / " + game.player.hpMax
 
-            /* if(game.player.hp < 1){
-                game.fight.playerDefeat()
-            } */
             }
             else if (enemy === 3) {
 
@@ -55,9 +49,6 @@ class Enemy {
 
                 document.querySelector("#hpFight").innerText = "HP: " + game.player.hp + " / " + game.player.hpMax
 
-                /* if(game.player.hp < 1){
-                    game.fight.playerDefeat()
-                } */
                 }
 
         game.fight.round += 1

@@ -17,9 +17,7 @@ function setup() {
 }
 
 function draw() {   
-    if(isClicked === true) {
         animations.draw()
-    }
 }
 
 
