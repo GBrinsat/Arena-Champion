@@ -149,13 +149,38 @@ class Fight {
     }
     
     disableEnemy(enemy) {
-        if(enemy === this.enemyOne && animations.fightTwoEnemyOne === true) {
-            document.querySelector("#selectorOne").innerText = ""
-            fightTwoEnemyOne = false
-        }
+       if(enemy === this.enemyTwo) {
+        animations.fightTwoEnemyTwo = false
+        animations.fightThreeEnemyTwo = false
+        document.querySelector("#selectorTwo").innerText = ""
+    }
         else {
-            document.querySelector("#selectorTwo").innerText = ""
+        animations.fightTwoEnemyOne = false
+        animations.fightThreeEnemyOne = false
+        document.querySelector("#selectorOne").innerText = ""
         }
+       
+       
+       
+        /* if(enemy === this.enemyOne && game.mainMenu.stageTwoSelected === true) {
+            document.querySelector("#selectorOne").innerText = ""
+            animations.fightTwoEnemyOne = false
+        }
+        else if(enemy === this.enemyTwo && game.mainMenu.stageTwoSelected === true) {
+            document.querySelector("#selectorTwo").innerText = ""
+            animations.fightTwoEnemyTwo = false
+        }
+        else if(enemy === this.enemyOne && game.mainMenu.stageThreeSelected === true) {
+            document.querySelector("#selectorOne").innerText = ""
+            animations.fightThreeEnemyOne = false
+        }
+        else if(enemy === this.enemyTwo && game.mainMenu.stageThreeSelected === true) {
+            document.querySelector("#selectorTwo").innerText = ""
+            animations.fightThreeEnemyTwo = false
+        }
+        else{
+            document.querySelector("#selectorOne").innerText = ""
+        } */
     }
 
     enemyTurn() {

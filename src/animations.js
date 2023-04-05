@@ -3,7 +3,10 @@ class Animations {
     
     constructor() {
         this.idle
-        this.attack //12 frames
+        this.attack
+        this.magic
+        this.crit
+        this.dodge
 
         this.characterScreen = false
         this.fightOne = false
@@ -27,7 +30,7 @@ class Animations {
         this.goblin = loadGif("../assets/GoblinIdle.gif")
         this.skeleton = loadGif("../assets/SkeletonIdle.gif")
         this.mushroom = loadGif("../assets/MushroomIdle.gif")
-        this.golem = loadImage("../assets/golem.png")
+        this.golem = loadGif("../assets/golemIdle.gif")
 
         this.attack = loadGif("../assets/attack1.gif")
         this.magic = loadGif("../assets/cast.gif")
@@ -57,13 +60,13 @@ class Animations {
             image(this.goblin, 550, 244)
         }
         if(this.fightThreeEnemyOne === true) {
-            image(this.mushroom, 550, 244)
-        }
-        if(this.fightThreeEnemyTwo === true) {
             image(this.skeleton, 350, 260)
         }
+        if(this.fightThreeEnemyTwo === true) {
+            image(this.mushroom, 550, 244)        
+        }
         if(this.fightFour === true) {
-            image(this.golem, 480, 110)
+            image(this.golem, 480, 20)
         }
 
         // player animations
@@ -99,7 +102,7 @@ class Animations {
             image(this.crit, 120, 244)
             this.crit.play()
 
-            if(this.crit.frame() === 8) {
+            if(this.crit.frame() === 19) {
                 this.playerCrit = false
                 this.crit.frame(0)
                 this.crit.pause()

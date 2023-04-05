@@ -176,8 +176,10 @@ class FightScreen {
                     document.querySelector(".menu").style.display = "flex"
                     this.surrender = false
                     animations.fightOne = false
-                    animations.fightTwo = false
-                    animations.fightThree = false
+                    animations.fightTwoEnemyOne = false
+                    animations.fightTwoEnemyTwo = false
+                    animations.fightThreeEnemyOne = false
+                    animations.fightThreeEnemyTwo = false
                     animations.fightFour = false
                     animations.playerIdle = false
                 }
