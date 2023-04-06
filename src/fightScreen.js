@@ -188,9 +188,12 @@ class FightScreen {
                     animations.fightThreeEnemyTwo = false
                     animations.fightFour = false
                     animations.playerIdle = false
+
+                    game.bossMusic.pause()
+                    game.backgroundMusic.play()
+                    game.backgroundMusic.jump()
                 }
                 else if(game.fight.round % 2 === 0) {
-                    console.log("playerMessage")
                     game.fight.enemyTurn()
                     this.messageDisplay.style.display = "none"
                 }
@@ -229,7 +232,6 @@ class FightScreen {
                 }
                 
                 this.enemyMessageDisplay.style.display = "none"
-                console.log("enemyclick")
             })
         }
 
@@ -257,7 +259,6 @@ class FightScreen {
             cont.addEventListener("click", () => {
          
                 game.fightScreen.burningDisplay.style.display = "none"
-                console.log("burnclick")
             })
         }
 

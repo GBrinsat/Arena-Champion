@@ -37,6 +37,9 @@ class CharacterScreen {
 
             parent.insertBefore(enterArena, child)
 
+            game.backgroundMusic.play()
+            game.backgroundMusic.setVolume(0.3)
+
         }, 7000)
 
 

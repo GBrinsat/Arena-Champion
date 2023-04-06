@@ -25,17 +25,17 @@ class Animations {
 
     preload() {
         
-        this.idle = loadGif("../assets/idle.gif")
-        this.eyeball = loadGif("../assets/eyeballIdle.gif")
-        this.goblin = loadGif("../assets/GoblinIdle.gif")
-        this.skeleton = loadGif("../assets/SkeletonIdle.gif")
-        this.mushroom = loadGif("../assets/MushroomIdle.gif")
-        this.golem = loadGif("../assets/golemIdle.gif")
+        this.idle = loadGif("assets/idle.gif")
+        this.eyeball = loadGif("assets/eyeballIdle.gif")
+        this.goblin = loadGif("assets/GoblinIdle.gif")
+        this.skeleton = loadGif("assets/SkeletonIdle.gif")
+        this.mushroom = loadGif("assets/MushroomIdle.gif")
+        this.golem = loadGif("assets/golemIdle.gif")
 
-        this.attack = loadGif("../assets/attack1.gif")
-        this.magic = loadGif("../assets/cast.gif")
-        this.crit = loadGif("../assets/heavyAttack.gif")
-        this.dodge = loadGif("../assets/dodge.gif")
+        this.attack = loadGif("assets/attack1.gif")
+        this.magic = loadGif("assets/cast.gif")
+        this.crit = loadGif("assets/heavyAttack.gif")
+        this.dodge = loadGif("assets/dodge.gif")
         this.attack.pause()
         this.magic.pause()
         this.crit.pause()

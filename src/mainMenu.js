@@ -192,9 +192,6 @@ class MainMenu {
                     else if(this.stageFourSelected === true){
                         game.fight.generateFightFour()
                         console.log("transfer to fight screen four")
-                        game.backgroundMusic.pause()
-                        game.bossMusic.setVolume(0.3)
-                        game.bossMusic.play()
                     }
                     
                 }
@@ -223,7 +220,6 @@ class MainMenu {
                         this.stageFourSelected = false
                     }
                 }
-                
                
             }
         })

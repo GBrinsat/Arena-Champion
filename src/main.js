@@ -20,9 +20,3 @@ function setup() {
 function draw() {   
         animations.draw()
 }
-
-
-/* for navigating menus
-function keyPressed() {
-
-} */

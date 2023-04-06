@@ -12,13 +12,15 @@ class Game {
         this.bossMusic
         this.attackSound
         this.magicSound
+        this.cheer
 
     }
 
     preload() {
-        this.backgroundMusic = loadSound("../assets/music/battle-of-the-dragons-8037.mp3")
-        this.bossMusic = loadSound("../assets/music/BossFight.mp3")
-        this.attackSound = loadSound("../assets/music/Swordattack.mp3")
-        this.magicSound = loadSound("../assets/music/Magic.wav")
+        this.backgroundMusic = loadSound("assets/music/battle-of-the-dragons-8037.mp3")
+        this.bossMusic = loadSound("assets/music/BossFight.mp3")
+        this.attackSound = loadSound("assets/music/Swordattack.mp3")
+        this.magicSound = loadSound("assets/music/Magic.wav")
+        this.cheer = loadSound("assets/music/Arena-crowd-cheer-sound-effect.mp3")
     }
 }

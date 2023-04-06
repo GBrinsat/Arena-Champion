@@ -21,9 +21,7 @@ class startScreen {
             document.querySelector("canvas").className = "background-animation"
         
             game.characterScreen.displayCharacter()
-
-            game.backgroundMusic.play()
-            game.backgroundMusic.setVolume(0.3)
+            game.cheer.play()
 
         })
     }

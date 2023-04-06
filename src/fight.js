@@ -152,6 +152,14 @@ class Fight {
 
         game.mainMenu.stageFourSelected = false
 
+        //start Audio
+
+        game.backgroundMusic.jump()
+        game.backgroundMusic.pause()
+        game.bossMusic.setVolume(0.3)
+        game.bossMusic.play()
+        game.bossMusic.jump()
+
         //reset values
 
         document.querySelector("#selectorOne").innerText = ""
