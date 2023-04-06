@@ -196,6 +196,7 @@ class FightScreen {
                 else if(game.fight.round % 2 === 0) {
                     game.fight.enemyTurn()
                     this.messageDisplay.style.display = "none"
+                    
                 }
                else {this.messageDisplay.style.display = "none"}
             })
