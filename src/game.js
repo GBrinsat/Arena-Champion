@@ -16,7 +16,6 @@ class Game {
     }
 
     preload() {
-        this.startScreen.startGame() 
         this.backgroundMusic = loadSound("../assets/music/battle-of-the-dragons-8037.mp3")
         this.bossMusic = loadSound("../assets/music/BossFight.mp3")
         this.attackSound = loadSound("../assets/music/Swordattack.mp3")

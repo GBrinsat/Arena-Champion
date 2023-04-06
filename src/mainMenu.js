@@ -65,7 +65,7 @@ class MainMenu {
         console.log(document.querySelector("#name"))
         document.querySelector("#name").innerText = "Name: " + game.player.name
         document.querySelector("#level").innerText = "Level: " + game.player.level
-        document.querySelector("#rank").innerText = "Rank: " + game.player.rank
+        document.querySelector("#rank").innerText = "Rank: Rookie"
         document.querySelector("#hp").innerText = "HP: " + game.player.hp
         document.querySelector("#mana").innerText = "Mana: " + game.player.mana
         document.querySelector("#strength").innerText = "Strength: " + game.player.str
@@ -174,6 +174,7 @@ class MainMenu {
                     game.fightScreen.createEnemySelector()
                     game.fightScreen.createMessageDisplay()
                     game.fightScreen.createEnemyMessageDisplay()
+                    game.fightScreen.createBurningMessageDisplay()
                     this.fightSelectContainer.remove()
 
                     if(this.stageOneSelected === true){

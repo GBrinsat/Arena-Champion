@@ -16,6 +16,14 @@ class Fight {
 
         game.mainMenu.stageOneSelected = false
 
+        //reset values
+
+        document.querySelector("#selectorOne").innerText = ""
+        document.querySelector("#selectorTwo").innerText = ""
+        this.enemyTwo.vulnerability = false
+        this.enemyOne.resistance = false
+
+
         animations.fightOne = true
 
         this.round = 1
@@ -24,13 +32,16 @@ class Fight {
         document.querySelector("#hpFight").innerText = "HP: " + game.player.hpMax + " / " + game.player.hpMax
         document.querySelector("#manaFight").innerText = "Mana: " + game.player.manaMax + " / " + game.player.manaMax
 
-        //enemies
+        //enemies setup
 
         this.enemyOne.name = "Floating Eyeball"
-        this.enemyOne.hp = 10
-        this.enemyOne.str = 20
+        this.enemyOne.hp = 15
+        this.enemyOne.str = 3
+        this.enemyOne.burning = false
 
         this.enemyTwo.hp = 0
+        this.enemyTwo.str = 0
+        this.enemyTwo.burning = false
 
         //rewards
         
@@ -48,6 +59,13 @@ class Fight {
 
         game.mainMenu.stageTwoSelected = false
 
+        //reset values
+
+        document.querySelector("#selectorOne").innerText = ""
+        document.querySelector("#selectorTwo").innerText = ""
+        this.enemyTwo.vulnerability = false
+        this.enemyOne.resistance = false
+
         animations.fightTwoEnemyOne = true
         animations.fightTwoEnemyTwo = true
 
@@ -57,15 +75,17 @@ class Fight {
         document.querySelector("#hpFight").innerText = "HP: " + game.player.hpMax + " / " + game.player.hpMax
         document.querySelector("#manaFight").innerText = "Mana: " + game.player.manaMax + " / " + game.player.manaMax
 
-        //enemies
+        //enemies setup
 
         this.enemyOne.name = "Goblin"
-        this.enemyOne.hp = 10
+        this.enemyOne.hp = 15
         this.enemyOne.str = 3
+        this.enemyOne.burning = false
 
         this.enemyTwo.name = "Goblin"
-        this.enemyTwo.hp = 10
+        this.enemyTwo.hp = 15
         this.enemyTwo.str = 3
+        this.enemyTwo.burning = false
 
         //rewards
         
@@ -85,6 +105,13 @@ class Fight {
 
         game.mainMenu.stageThreeSelected = false
 
+        //reset values
+
+        document.querySelector("#selectorOne").innerText = ""
+        document.querySelector("#selectorTwo").innerText = ""
+        this.enemyTwo.vulnerability = false
+        this.enemyOne.resistance = false
+
         animations.fightThreeEnemyOne = true
         animations.fightThreeEnemyTwo = true
 
@@ -94,15 +121,19 @@ class Fight {
         document.querySelector("#hpFight").innerText = "HP: " + game.player.hpMax + " / " + game.player.hpMax
         document.querySelector("#manaFight").innerText = "Mana: " + game.player.manaMax + " / " + game.player.manaMax
 
-        //enemies
+        //enemies setup
 
         this.enemyOne.name = "Skeleton"
-        this.enemyOne.hp = 10
-        this.enemyOne.str = 3
+        this.enemyOne.hp = 20
+        this.enemyOne.str = 4
+        this.enemyOne.burning = false
+        this.enemyOne.resistance = true
 
         this.enemyTwo.name = "Mushroom"
-        this.enemyTwo.hp = 10
-        this.enemyTwo.str = 3
+        this.enemyTwo.hp = 20
+        this.enemyTwo.str = 4
+        this.enemyTwo.burning = false
+        this.enemyTwo.vulnerability = true
 
         //rewards
         
@@ -119,9 +150,16 @@ class Fight {
 
     generateFightFour() {
 
-        animations.fightFour = true
-
         game.mainMenu.stageFourSelected = false
+
+        //reset values
+
+        document.querySelector("#selectorOne").innerText = ""
+        document.querySelector("#selectorTwo").innerText = ""
+        this.enemyTwo.vulnerability = false
+        this.enemyOne.resistance = false
+
+        animations.fightFour = true
 
         this.round = 1
         game.player.hp = game.player.hpMax
@@ -129,13 +167,16 @@ class Fight {
         document.querySelector("#hpFight").innerText = "HP: " + game.player.hpMax + " / " + game.player.hpMax
         document.querySelector("#manaFight").innerText = "Mana: " + game.player.manaMax + " / " + game.player.manaMax
 
-        //enemies
+        //enemies setup
 
         this.enemyOne.name = "Golem"
-        this.enemyOne.hp = 10
-        this.enemyOne.str = 3
+        this.enemyOne.hp = 50
+        this.enemyOne.str = 10
+        this.enemyOne.burning = false
 
         this.enemyTwo.hp = 0
+        this.enemyTwo.str = 0
+        this.enemyTwo.burning = false
 
         //rewards
         
@@ -159,28 +200,6 @@ class Fight {
         animations.fightThreeEnemyOne = false
         document.querySelector("#selectorOne").innerText = ""
         }
-       
-       
-       
-        /* if(enemy === this.enemyOne && game.mainMenu.stageTwoSelected === true) {
-            document.querySelector("#selectorOne").innerText = ""
-            animations.fightTwoEnemyOne = false
-        }
-        else if(enemy === this.enemyTwo && game.mainMenu.stageTwoSelected === true) {
-            document.querySelector("#selectorTwo").innerText = ""
-            animations.fightTwoEnemyTwo = false
-        }
-        else if(enemy === this.enemyOne && game.mainMenu.stageThreeSelected === true) {
-            document.querySelector("#selectorOne").innerText = ""
-            animations.fightThreeEnemyOne = false
-        }
-        else if(enemy === this.enemyTwo && game.mainMenu.stageThreeSelected === true) {
-            document.querySelector("#selectorTwo").innerText = ""
-            animations.fightThreeEnemyTwo = false
-        }
-        else{
-            document.querySelector("#selectorOne").innerText = ""
-        } */
     }
 
     enemyTurn() {
@@ -199,7 +218,33 @@ class Fight {
         
     }
 
+    burningDamage() {
+
+        console.log("burning")
+        game.fightScreen.burningDisplay.style.display = "flex"
+
+        if(game.fight.enemyOne.burning === true && game.fight.enemyTwo.burning === true){
+            game.fight.enemyOne.hp -= game.player.int
+            game.fight.enemyTwo.hp -= game.player.int
+            document.querySelector("#burningMessage").innerText = "Your enemies are burning and suffered " + game.player.int + " points of damage!"
+        }
+
+        else if(game.fight.enemyOne.burning === true){
+            game.fight.enemyOne.hp -= game.player.int
+            document.querySelector("#burningMessage").innerText = "The " + game.fight.enemyOne.name + " is burning and suffered " + game.player.int + " points of damage!"
+            console.log("second condition")
+        }
+
+        else if(game.fight.enemyTwo.burning === true){
+            game.fight.enemyTwo.hp -= game.player.int
+            document.querySelector("#burningMessage").innerText = "The " + game.fight.enemyTwo.name + " is burning and suffered " + game.player.int + " points of damage!"
+        }
+
+        else {game.fightScreen.burningDisplay.style.display = "none"}
+    }
+
     outOfMana() {
+        game.fightScreen.enemyMessageDisplay.style.display = "none"
         game.fightScreen.messageDisplay.style.display = "flex"
 
         document.querySelector("#message").innerText = "You are out of Mana!" 
@@ -207,11 +252,15 @@ class Fight {
 
     playerDefeat() {
 
-        console.log("gameover")
-        game.fightScreen.messageDisplay.style.display = "flex"
-        game.fightScreen.surrender = true
+        if(game.player.hp < 1) {
 
-        document.querySelector("#message").innerText = "Your enemies defeated you, try again!" 
+            console.log("gameover")
+            game.fightScreen.messageDisplay.style.display = "flex"
+            game.fightScreen.surrender = true
+
+            document.querySelector("#message").innerText = "Your enemies defeated you, try again!" 
+        }
+        
 
     }
 
@@ -250,7 +299,7 @@ class Fight {
                             document.querySelector("#intelligence").innerText = "Intelligence: 6"
                             game.player.hpMax = 25
                             game.player.manaMax = 15
-                            game.player.str = 7
+                            game.player.str = 5
                             game.player.int = 6
                             break;
 
@@ -260,8 +309,8 @@ class Fight {
                             document.querySelector("#intelligence").innerText = "Intelligence: 8"
                             game.player.hpMax = 30
                             game.player.manaMax = 20
-                            game.player.str = 10
-                            game.player.int = 8
+                            game.player.str = 7
+                            game.player.int = 7
                             break;
 
                 case 4 :    document.querySelector("#hp").innerText = "HP: 35"
@@ -270,8 +319,8 @@ class Fight {
                             document.querySelector("#intelligence").innerText = "Intelligence: 12"
                             game.player.hpMax = 35
                             game.player.manaMax = 25
-                            game.player.str = 12
-                            game.player.int = 12
+                            game.player.str = 10
+                            game.player.int = 10
                             break;
 
                 case 5 :    document.querySelector("#hp").innerText = "HP: 50"
@@ -293,6 +342,7 @@ class Fight {
 
             document.querySelector("#gold").innerText = "Gold: " + game.player.gold
         }
+
     }
 }
 

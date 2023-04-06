@@ -11,6 +11,7 @@ function preload() {
 }
 
 function setup() {
+    game.startScreen.startGame() 
     let canvas = createCanvas(screenWidth, screenHeight);
     canvas.parent("canvas")
     console.log(canvas.parent())

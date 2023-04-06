@@ -16,38 +16,30 @@ class CharacterScreen {
 
             parent.insertBefore(nameInput, child)
 
-            const enterArena = document.createElement("button")
+            const enterArena = document.createElement("span")
             enterArena.className = "enterArena"
-            enterArena.name = "enter"
             enterArena.innerText = "Enter the arena!"
+            
+            enterArena.addEventListener("mouseover", () => {
+                enterArena.style.color = "red"
+             })
+            enterArena.addEventListener("mouseout", () => {
+                enterArena.style.color = "black"
+             })
+            enterArena.addEventListener("click", () => {
+                game.player.name = document.querySelector(".nameInput").value
+                enterArena.remove()
+                document.querySelector(".nameInput").remove()
+                game.mainMenu.displayMenu()
+
+                animations.characterScreen = false
+             })
 
             parent.insertBefore(enterArena, child)
 
-            game.characterScreen.enterArena()
-
-        }, 0)
+        }, 7000)
 
 
-    }
-
-    enterArena() {
-
-        const enterArena = document.querySelector(".enterArena")
-        console.log(enterArena)
-        enterArena.addEventListener("click", () => {
-            game.player.name = document.querySelector(".nameInput").value
-
-            const nameInput = document.querySelector(".nameInput").remove()
-            enterArena.remove()
-            game.mainMenu.displayMenu()
-
-            animations.characterScreen = false
-            
-            console.log(animations.attack.totalFrames())
-            console.log(animations.idle.totalFrames())
-
-        })
-        
     }
 
 }

@@ -6,7 +6,7 @@ class Player {
         this.image
         this.name
         this.level = 1
-        this.rank = "Rookie"
+        this.rank = 0
 
         this.hpMax = 20
         this.manaMax = 10
@@ -18,6 +18,7 @@ class Player {
 
         this.target
 
+        this.isDodging = false
         this.attackVariable
         this.magicVariable
         this.critValue
@@ -33,10 +34,10 @@ class Player {
         
         //set Dmg Values
       
-        this.critValue = Math.floor(Math.random() * 4)
+        this.critValue = Math.ceil(Math.random() * 5)
         this.attackVariable = Math.floor(Math.random() * 6)
 
-        if(this.critValue === 4) {
+        if(this.critValue === 5) {
             animations.playerCrit = true
 
             enemy.hp -= (this.str + this.attackVariable + 10)
@@ -69,9 +70,14 @@ class Player {
                 document.querySelector("#message").innerText = "You slashed the " + enemy.name + " for " + (this.str + this.attackVariable) + " points of damage and defeated it"
                 game.fight.disableEnemy(enemy)
         }}
+
+        console.log(game.fight.enemyOne)
+        console.log(game.fight.enemyTwo)
     }
 
     magic(enemy) {
+
+        //play sound and animations
 
         game.magicSound.setVolume(0.3)
         game.magicSound.play()
@@ -80,16 +86,31 @@ class Player {
         animations.playerMagic = true
         animations.playerIdle = false
 
-        //set Dmg Values
+        //deal Damage and set burning
 
-        this.attackVariable = Math.floor(Math.random() * 6)
-        enemy.hp -= (this.int + this.attackVariable)
+        enemy.burning = true
+
+        let damage = 0
+        this.attackVariable = Math.floor(Math.random() * 4)
+
+        if(enemy.vulnerability === true) {
+            damage = Math.ceil(((this.int) * 2 + this.attackVariable))
+            document.querySelector("#message").innerText = "The " + enemy.name + " is vulnerable to Magic! You burned it for " + damage + " points of Magic damage!"
+        }
+        else if(enemy.resistance === true) {
+            damage = Math.ceil(((this.int) / 2 + this.attackVariable))
+            document.querySelector("#message").innerText = "The " + enemy.name + " is resistant to Magic! You burned it for " + damage + " points of Magic damage!"
+        }
+        else {
+            damage = (this.int + this.attackVariable)
+            document.querySelector("#message").innerText = "You burned the " + enemy.name + " for " + damage + " points of Magic damage!"
+        }
         
+        enemy.hp -= damage
+
         this.mana -= 5
         document.querySelector("#manaFight").innerText = this.mana + " / " + this.manaMax
 
-        enemy.hp -= this.int
-        document.querySelector("#message").innerText = "You burned the " + enemy.name + " for " + (this.int + this.attackVariable) + " points of damage!"
         game.fightScreen.messageDisplay.style.display = "flex"
         game.fightScreen.surrender = false
 
@@ -98,9 +119,13 @@ class Player {
             game.fight.reward()
         }
         else if(enemy.hp < 1) {
-            document.querySelector("#message").innerText = "You burned the " + enemy.name + " for " + (this.int + this.attackVariable) + " points of Magic damage an defeated it"
+            document.querySelector("#message").innerText = "You burned the " + enemy.name + " for " + damage + " points of Magic damage an defeated it"
             game.fight.disableEnemy(enemy)
             
         }
+
+        console.log(game.fight.enemyOne)
+        console.log(game.fight.enemyTwo)
     }
+
 }

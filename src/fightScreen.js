@@ -9,6 +9,7 @@ class FightScreen {
         this.messageDisplay
         this.fightContainer
         this.enemyMessageDisplay
+        this.burningDisplay
     }
     
     displayFightScreen() {
@@ -72,7 +73,12 @@ class FightScreen {
 
         dodge.addEventListener("click", () => {
             if(dodge.style.color === "red"){
-                //fight function dodge
+                animations.playerIdle = false
+                animations.playerDodge = true
+                game.player.isDodging = true
+                this.messageDisplay.style.display = "flex"
+                document.querySelector("#message").innerText = "You prepare to dodge the enemies attacks!"
+                game.fight.round += 1
             }
         })
 
@@ -184,7 +190,7 @@ class FightScreen {
                     animations.playerIdle = false
                 }
                 else if(game.fight.round % 2 === 0) {
-                    console.log("enemy turn")
+                    console.log("playerMessage")
                     game.fight.enemyTurn()
                     this.messageDisplay.style.display = "none"
                 }
@@ -215,10 +221,44 @@ class FightScreen {
             })
             cont.addEventListener("click", () => {
             
-                if(game.player.hp < 1){
+                if(game.player.hp < 1) {
                     game.fight.playerDefeat()
                 }
-               this.enemyMessageDisplay.style.display = "none"
+                else{
+                    game.fight.burningDamage()
+                }
+                
+                this.enemyMessageDisplay.style.display = "none"
+                console.log("enemyclick")
             })
         }
+
+        createBurningMessageDisplay() {
+            
+            this.burningDisplay = document.createElement("div")
+            this.burningDisplay.className = "burningDisplay"
+
+            this.burningDisplay.innerHTML = "<span id='burningMessage'>Text</span><span id='burningContinue'>Continue</span>"
+
+            const parent = document.querySelector("#canvas")
+            const child = document.querySelector("#defaultCanvas0")
+    
+            parent.insertBefore(this.burningDisplay, child)
+    
+            this.burningDisplay.style.display = "none"
+
+            const cont = document.querySelector("#burningContinue")
+            cont.addEventListener("mouseover", () => {
+                cont.style.color = "red"
+            })
+            cont.addEventListener("mouseout", () => {
+                cont.style.color = "black"
+            })
+            cont.addEventListener("click", () => {
+         
+                game.fightScreen.burningDisplay.style.display = "none"
+                console.log("burnclick")
+            })
+        }
+
     }

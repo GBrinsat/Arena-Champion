@@ -20,7 +20,7 @@ class Animations {
         this.playerIdle = false
         this.playerMagic = false
         this.playerCrit = false
-        this.playerDodge
+        this.playerDodge = false
     }
 
     preload() {
@@ -35,15 +35,18 @@ class Animations {
         this.attack = loadGif("../assets/attack1.gif")
         this.magic = loadGif("../assets/cast.gif")
         this.crit = loadGif("../assets/heavyAttack.gif")
-        //this.dodge = loadGif()
+        this.dodge = loadGif("../assets/dodge.gif")
         this.attack.pause()
         this.magic.pause()
         this.crit.pause()
-        //this.dodge.pause()
+        this.dodge.pause()
     }
 
     draw() {
         clear()
+
+        // basic animations
+        
         if(this.playerIdle === true) {
             image(this.idle, 120, 244)
         }
@@ -115,7 +118,7 @@ class Animations {
             image(this.dodge, 120, 244)
             this.dodge.play()
 
-            if(this.dodge.frame() === 8) {
+            if(this.dodge.frame() === 9) {
                 this.playerDodge = false
                 this.dodge.frame(0)
                 this.dodge.pause()

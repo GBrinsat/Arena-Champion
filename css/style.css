@@ -10,6 +10,7 @@ body {
     margin: 0;
     font-family: "monogram";
     font-size: 32px;
+    cursor: url("../assets/cursor.png"), pointer;
 }
 
 @keyframes header-zoom {
@@ -42,6 +43,15 @@ body {
     100% {background-position-y: 100%;}
 }
 
+#p5_loading {
+    display: flex;
+    justify-content: center;
+
+    color: #ffddb4;
+    position: absolute;
+    left: 38vw;
+    top: 47vh;
+}
 
 .start-screen {
     display: flex;
@@ -62,7 +72,7 @@ h1 {
     text-align: center;
 
     animation-name: header-zoom;
-    /* animation-duration: 2s; */
+    animation-duration: 2s;
     animation-timing-function: linear;
 }
 
@@ -77,7 +87,7 @@ p {
     text-align: center;
 
     animation-name: instructions-fadein;
-    /* animation-duration: 3s; */
+    animation-duration: 3s;
 }
 
 #canvas {
@@ -98,7 +108,7 @@ canvas {
     background-position: bottom;
     border: 1px white solid;
     animation-name: background-fadein, background-movement;
-    /* animation-duration: 1s, 8s; */
+    animation-duration: 1s, 8s;
 }
 
 .start-button {
@@ -112,7 +122,7 @@ canvas {
     background-color: rgb(254,225,184);
 
     animation-name: startbutton-fadein;
-    /* animation-duration: 3.5s; */
+    animation-duration: 3.5s;
 }
 
 .character-screen {
@@ -130,8 +140,8 @@ canvas {
     height: 30px;
     top: 430px;
     border: none;
+    background: none;
     background-image: url("../assets/nameInput.png");
-    background-color: none;
 }
 
 .enterArena{
@@ -256,40 +266,6 @@ canvas {
     
 }
 
-/* .characterDisplayBox {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-end;
-
-    position: absolute;
-    top: 244px;
-
-    width: 800px;
-    height: 230px;
-
-}
-
-.playerDisplay {
-    background-image: url("../assets/attack12.png");
-    width: 250px;
-    height: 185px;
-}
-
-.enemyDisplayOne {
-    background-image: url("../assets/Mushroom.png");
-    width: 150px;
-    height: 185px;
-
-}
-.enemyDisplayTwo {
-    background-color: white;
-    width: 200px;
-    height: 185px;
-    
-    align-self: flex-start;
-} */
-
 .enemySelector {
     display: flex;
     flex-direction: column;
@@ -321,6 +297,21 @@ canvas {
 }
 
 .enemyMessageDisplay {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    position: absolute;
+    top: 524px;
+
+    
+    height: 170px;
+    width: 876px;
+    padding-left: 50px;
+    background-image: url("../assets/message.png");
+}
+
+.burningDisplay {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
