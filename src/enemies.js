@@ -81,6 +81,8 @@ class Enemy {
 
                 }
 
+        animations.fightFour = false
+        animations.golemAttackTrigger = true
         game.fight.round += 1
     }
 }

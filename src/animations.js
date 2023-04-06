@@ -21,6 +21,8 @@ class Animations {
         this.playerMagic = false
         this.playerCrit = false
         this.playerDodge = false
+
+        this.golemAttackTrigger = false
     }
 
     preload() {
@@ -31,6 +33,7 @@ class Animations {
         this.skeleton = loadGif("assets/SkeletonIdle.gif")
         this.mushroom = loadGif("assets/MushroomIdle.gif")
         this.golem = loadGif("assets/golemIdle.gif")
+        this.golemAttack = loadGif("assets/GolemAttack.gif")
 
         this.attack = loadGif("assets/attack1.gif")
         this.magic = loadGif("assets/cast.gif")
@@ -126,6 +129,18 @@ class Animations {
             }
         }
 
+        if(this.golemAttackTrigger === true) {
+            
+            image(this.golemAttack, 480, 20)
+            this.golemAttack.play()
+
+            if(this.golemAttack.frame() === 5) {
+                this.golemAttackTrigger = false
+                this.golemAttack.frame(0)
+                this.golemAttack.pause()
+                this.fightFour = true
+            }
+        }
         
         
     }

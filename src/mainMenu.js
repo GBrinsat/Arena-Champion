@@ -159,6 +159,7 @@ class MainMenu {
                 stageTwo.style.textDecoration = "none"
                 stageThree.style.textDecoration = "none"
                 stageFour.style.textDecoration = "underline"
+                console.log(animations.golemAttack.totalFrames())
             }
         })
 
