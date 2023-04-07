@@ -37,6 +37,8 @@ class Enemy {
 
         document.querySelector("#hpFight").innerText = "HP: " + game.player.hp + " / " + game.player.hpMax
 
+        
+
         }
         else if (enemy === 2) {
 
@@ -82,7 +84,18 @@ class Enemy {
                 }
 
                 
-
+        this.enemyAnimations()
         game.fight.round += 1
+    }
+
+    enemyAnimations() {
+
+        console.log("testing")
+        if (game.fight.fightFour === true) {
+            animations.golemAttackTrigger = true
+        }
+        else if (game.fight.fightOne === true) {
+            animations.eyeballAttackTrigger = true
+        }
     }
 }

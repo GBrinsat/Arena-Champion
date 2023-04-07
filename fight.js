@@ -10,11 +10,17 @@ class Fight {
         this.rewardGold
         this.level
         this.rewardRank
+
+        this.fightOne = false
+        this.fightTwo = false
+        this.fightThree = false
+        this.fightFour = false
     }
 
     generateFightOne() {
 
         game.mainMenu.stageOneSelected = false
+        this.fightOne = true
 
         //reset values
 
@@ -57,6 +63,7 @@ class Fight {
 
     generateFightTwo() {
 
+        this.fightTwo = true
         game.mainMenu.stageTwoSelected = false
 
         //reset values
@@ -103,6 +110,7 @@ class Fight {
 
     generateFightThree() {
 
+        this.fightThree = true
         game.mainMenu.stageThreeSelected = false
 
         //reset values
@@ -150,6 +158,8 @@ class Fight {
 
     generateFightFour() {
 
+        this.fightFour = true
+        console.log(this.fightFour)
         game.mainMenu.stageFourSelected = false
 
         //start Audio
@@ -267,6 +277,11 @@ class Fight {
             game.fightScreen.surrender = true
 
             document.querySelector("#message").innerText = "Your enemies defeated you, try again!" 
+
+            this.fightOne = false
+            this.fightTwo = false
+            this.fightThree = false
+            this.fightFour = false
         }
         
 
@@ -275,6 +290,10 @@ class Fight {
     reward() {
 
         game.fightScreen.surrender = true
+        this.fightOne = false
+        this.fightTwo = false
+        this.fightThree = false
+        this.fightFour = false
 
         if(game.player.level < this.level && game.player.rank < this.rewardRank) {
             document.querySelector("#message").innerText = "You won the fight! You earn " + this.rewardGold + " Gold and Level Up to Level " + this.level + " !"

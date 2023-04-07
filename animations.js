@@ -23,15 +23,23 @@ class Animations {
         this.playerDodge = false
 
         this.golemAttackTrigger = false
+        this.goblinAttackTrigger = false
+        this.eyeballAttackTrigger = false
+        this.skeletonAttackTrigger = false
+        this.mushroomAttackTrigger = false
     }
 
     preload() {
         
         this.idle = loadGif("assets/idle.gif")
         this.eyeball = loadGif("assets/eyeballIdle.gif")
+        this.eyeballAttack = loadGif("assets/eyeballAttack.gif")
         this.goblin = loadGif("assets/GoblinIdle.gif")
+        this.goblinAttack 
         this.skeleton = loadGif("assets/SkeletonIdle.gif")
+        this.skeletonAttack
         this.mushroom = loadGif("assets/MushroomIdle.gif")
+        this.mushroomAttack
         this.golem = loadGif("assets/golemIdle.gif")
         this.golemAttack = loadGif("assets/GolemAttack.gif")
 
@@ -43,6 +51,9 @@ class Animations {
         this.magic.pause()
         this.crit.pause()
         this.dodge.pause()
+
+        this.golemAttack.pause()
+        this.eyeballAttack.pause()
     }
 
     draw() {
@@ -57,7 +68,7 @@ class Animations {
             image(this.idle, 387, 170)
         }
         if(this.fightOne === true) {
-            image(this.eyeball, 400, 244)
+            image(this.eyeball, 400, 70)
         }
         if(this.fightTwoEnemyOne === true) {
             image(this.goblin, 350, 290)
@@ -131,6 +142,7 @@ class Animations {
 
         if(this.golemAttackTrigger === true) {
             
+            this.fightFour = false
             image(this.golemAttack, 480, 20)
             this.golemAttack.play()
 
@@ -141,6 +153,36 @@ class Animations {
                 this.fightFour = true
             }
         }
+
+        if(this.eyeballAttackTrigger === true) {
+            
+            this.fightOne = false
+            image(this.eyeballAttack, 400, 70)
+            this.eyeballAttack.play()
+
+            if(this.eyeballAttack.frame() === 7) {
+                this.eyeballAttackTrigger = false
+                this.eyeballAttack.frame(0)
+                this.eyeballAttack.pause()
+                this.fightOne = true
+            }
+        }
+
+
+        /* if(this.goblinAttackTrigger === true) {
+            
+            this.fightTwoEnemyOne = false
+            this.fightTwoEnemyTwo = false
+            image(this.goblinAttack, 480, 20)
+            this.goblinAttack.play()
+
+            if(this.goblinAttack.frame() === 5) {
+                this.goblinAttackTrigger = false
+                this.goblinAttack.frame(0)
+                this.goblinAttack.pause()
+                this.fightTwo = true
+            }
+        } */
         
         
     }
