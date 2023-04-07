@@ -189,6 +189,11 @@ class FightScreen {
                     animations.fightFour = false
                     animations.playerIdle = false
 
+                    game.fight.fightOne = false
+                    game.fight.fightTwo = false
+                    game.fight.fightThree = false
+                    game.fight.fightFour = false
+
                     game.bossMusic.pause()
                     game.backgroundMusic.play()
                     game.backgroundMusic.jump()
