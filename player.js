@@ -73,6 +73,11 @@ class Player {
 
         console.log(game.fight.enemyOne)
         console.log(game.fight.enemyTwo)
+
+        setTimeout(function() {
+            if(game.fight.)
+
+        }, 2000)
     }
 
     magic(enemy) {

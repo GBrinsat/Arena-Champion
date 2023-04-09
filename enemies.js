@@ -11,6 +11,12 @@ class Enemy {
         this.resistance = false
 
         this.attackVariable = Math.floor(Math.random() * 8)
+
+        this.idleAnimation
+        this.attackAnimation
+        this.hitAnimation
+        this.deathAnimation
+        this.deathImage
     }
 
     attack(enemy) {
@@ -90,12 +96,18 @@ class Enemy {
 
     enemyAnimations() {
 
-        console.log("testing")
         if (game.fight.fightFour === true) {
             animations.golemAttackTrigger = true
         }
         else if (game.fight.fightOne === true) {
             animations.eyeballAttackTrigger = true
+        }
+        else if (game.fight.fightTwo === true) {
+            animations.goblinAttackTrigger = true
+        }
+        else if( game.fight.fightThree === true) {
+            animations.skeletonAttackTrigger = true
+            animations.mushroomAttackTrigger = true
         }
     }
 }
